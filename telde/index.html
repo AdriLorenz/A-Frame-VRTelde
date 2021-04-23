@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR San Cristobal</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@4.x.x/dist/aframe-layout-component.min.js"></script>
+    <!--animation component script-->
+
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/components/changesite.js"></script>
+    <script src="js/components/togglesound.js"></script>
+    <script src="js/components/video.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="button-container">
+        <button id="speaker-button">
+            <img id="sound-on" src="img/soundon.png" alt="texture">
+        </button>
+    </div>
+
+    <a-scene background="color: #ECECEC">
+        <a-assets>
+            <img id="exit" src="img/exit.png" alt="texture">
+            <img id="telde" src="img/Telde.jpg" alt="panoramica-telde">
+            <img id="sanJuan" src="img/SanJuan.jpg" alt="san-juan">
+            <img id="sanJuanAntiguo" src="img/SanJuanAntiguo2.png" alt="san-juan-antiguo">
+            <img id="iglesia" src="img/iglesia.jpg" alt="church">
+            <img id="playaMelenara" src="img/PlayaMelenara.jpg" alt="playa-melenara">
+            <img id="MelenaraAntiguo" src="img/PlayaMelenaraAntiguo.png" alt="playa-melenara-antiguo">
+            <img id="sieteOjos" src="img/SieteOjos.jpg" alt="puente-siete-ojos">
+            <img id="sieteOjosAntiguo" src="img/SieteOjosAntiguo2.png" alt="puente-siete-ojos-antiguo">
+            <img id="retratoMelenara" src="img/RetratoMelenara.png" alt="retrato-melenara">
+            <img id="retratoMelenaraAntiguo" src="img/RetratoMelenaraAntiguo.png" alt="retrato-melenara">
+            <img id="retratoSanJuan" src="img/RetratoSanJuan.png" alt="retrato-san-juan">
+            <img id="retratoTelde" src="img/retratoTelde.png" alt="retrato-telde">
+            <img id="retratoSanJuanAntiguo" src="img/RetratoSanJuanAntiguo.png" alt="retrato-san-juan-antiguo">
+            <img id="retratoSieteOjos" src="img/RetratoSieteOjos.png" alt="retrato-siete-ojos">
+            <img id="retratoSieteOjosAntiguo" src="img/RetratoSieteOjosAntiguo.png" alt="retrato-siete-ojos-antiguo">
+            <img id="play" src="img/play.png" alt="play button">
+            <img id="pause" src="img/pause.png" alt="pause button">
+            <video id="cristo" src="video/Cristo.mp4"></video>
+            <audio id="beach-sound"
+                src="ogg/beach.wav"
+                preload="auto"></audio>
+            <audio id="cars" src="ogg/cars.mp3" preload="auto"></audio>
+            <audio id="horse" src="ogg/horse.mp3" preload="auto"></audio>
+            <audio id="relaxedBeach" src="ogg/relax_beach.mp3" preload="auto"></audio>
+            <audio id="birds" src="ogg/birds.mp3" preload="auto"></audio>
+
+        </a-assets>
+
+        <a-entity id="cam" camera="" position="0 1.6 0" look-controls=""
+            rotation="-27.960340402384183 312.7203645824033 0" data-aframe-inspector-original-camera="">
+            <a-entity cursor="fuse:true;fuseTimeout:2000" geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.02"
+                position="0 0 -1.8" material="shader:flat;color:#ff0000"
+                animation__mouseenter="dir:reverse;dur:2000;loop:1;property:scale;startEvents:mouseenter;to:3 3 3"
+                raycaster="">
+            </a-entity>
+        </a-entity>
+        <a-entity id="spots" hotspots>
+            <a-entity id="group-point1">
+                <a-image src="#retratoMelenara"
+                    spot="linkto:#playaMelenara; spotgroup:group-point3; sound: #beach-sound; img: #playaMelenara"
+                    position="-1.1 0 -3"></a-image>
+                <a-text position="-1.1 0.7 -3" scale="1.25 1.25 1.25" color="black" value="Playa de Melenara" align="center"></a-text>
+                <a-image src="#retratoSanJuan"
+                    spot="linkto:#sanJuan;spotgroup:group-point4; sound: #cars; img: #sanJuan"
+                    position="-1.1 1.6 -3"></a-image>
+                <a-text position="-1.1 2.5 -3" scale="1.25 1.25 1.25" color="black" value="San Juan" align="center"></a-text>
+                <a-image src="#retratoSieteOjos"
+                    spot="linkto:#sieteOjos;spotgroup:group-point7; sound: #cars; img: #sieteOjos"
+                    position="1.3 1.6 -3"></a-image>
+                <a-text position="1.4 2.5 -3" scale="1.25 1.25 1.25" color="black" value="Puente Siete Ojos"
+                    align="center"></a-text>
+            </a-entity>
+            <a-entity id="group-point2" scale="0 0 0">
+                <a-image src="#retratoTelde"
+                    spot="linkto:#telde; spotgroup:group-point1; sound: #birds; img: #telde" position="0 3 -3">
+                </a-image>
+                <a-text value="Menu principal" position="0 2 -3" color="black" align="center"></a-text>
+                <a-image src="#retratoSanJuan"
+                    spot="linkto:#sanJuan;spotgroup:group-point4; sound: #cars; img: #sanJuan" position="-2 1 5">
+                </a-image>
+                <a-text rotation="0 -180 0" position="-2 0 5" color="black" value="San Juan - Version moderna"
+                    align="center"></a-text>
+            </a-entity>
+            <a-entity id="group-point3" scale="0 0 0">
+                <a-image src="#retratoTelde"
+                    spot="linkto:#telde; spotgroup:group-point1; sound: #birds; img: #telde"
+                    position="0.5 2.8 3.8">
+                </a-image>
+                <a-text value="Menu principal" scale="1.25 1.25 1.25" rotation="0 -180 0" position="0.5 2 3.8"
+                    color="black" align="center">
+                </a-text>
+                <a-image src="#retratoMelenaraAntiguo"
+                    spot="linkto:#MelenaraAntiguo; spotgroup:group-point5; sound: #relaxedBeach; img: #MelenaraAntiguo"
+                    position="-2.6 3 1" rotation="180 120 -180">
+                </a-image>
+                <a-text value="Melenara antigua" scale="1.25 1.25 1.25" rotation="-0 120 0" position="-2.6 2.2 1"
+                    color="black" align="center">
+                </a-text>
+            </a-entity>
+            <a-entity id="group-point4" scale="0 0 0">
+                <a-image src="#retratoSanJuanAntiguo"
+                    spot="linkto:#sanJuanAntiguo;spotgroup:group-point2; sound: #horse; img: #sanJuanAntiguo"
+                    position="-2 1 5"></a-image>
+                <a-text rotation="0 -180 0" position="-2 0.2 5" scale="1.25 1.25 1.25" color="black" value="San Juan - Version antigua"
+                    align="center"></a-text>
+                <a-image src="#retratoTelde"
+                    spot="linkto:#telde; spotgroup:group-point1; sound: #birds; img: #telde" position="0 2.4 -3">
+                </a-image>
+                <a-text value="Menu principal" scale="1.25 1.25 1.25" position="0.1 1.6 -3" color="black" align="center"></a-text>
+                <a-image src="#exit" spot="linkto:#iglesia; spotgroup:group-point6; img: #iglesia" position="1 1.65 7">
+                </a-image>
+            </a-entity>
+            <a-entity id="group-point5" scale="0 0 0">
+                <a-image src="#retratoTelde"
+                    spot="linkto:#telde; spotgroup:group-point1; sound: #birds; img: #telde"
+                    position="0.5 2.8 3.8">
+                </a-image>
+                <a-text value="Menu principal" scale="1.25 1.25 1.25" rotation="0 -180 0" position="0.5 2 3.8"
+                    color="black" align="center">
+                </a-text>
+                <a-image src="#retratoMelenara"
+                    spot="linkto:#playaMelenara; spotgroup:group-point3; sound: #beach-sound; img: #playaMelenara"
+                    position="0 2.5 -3"></a-image>
+                <a-text position="0 1.8 -3" scale="1.25 1.25 1.25" color="black" value="Playa de Melenara"
+                    align="center"></a-text>
+            </a-entity>
+            <a-entity id="group-point6" scale="0 0 0">
+                <a-video src="#cristo" width="8" height="4.5" position="-4 2.5 0" rotation="-180 -90 -180">
+                </a-video>
+                <a-image id="videoControls" src="#play" position="-4 -0.5 0" rotation="0 90 0" scale="0.5 0.5 1"
+                    play-pause>
+                </a-image>
+                <a-image src="#exit" spot="linkto:#sanJuan; spotgroup:group-point4; sound: #cars; img: #sanJuan"  position="8.3 1.65 0"
+                    rotation="-180 90 -180">
+                </a-image>
+            </a-entity>
+            <a-entity id="group-point7" scale="0 0 0">
+                <a-image src="#retratoTelde"
+                    spot="linkto:#telde; spotgroup:group-point1; sound: #birds; img: #telde" position="-3.5 3.5 5" rotation="0 -35 0">
+                </a-image>
+                <a-text value="Menu principal" scale="1.25 1.25 1.25" position="-3.4 2.8 4.8" rotation="0 145 0" color="black" align="center"></a-text>
+                <a-image src="#retratoSieteOjosAntiguo"
+                    spot="linkto:#sieteOjosAntiguo;spotgroup:group-point8; sound: #horse; img: #sieteOjosAntiguo"
+                    position="4 0.1 -5" rotation="0 -40 0"></a-image>
+                <a-text scale="1.25 1.25 1.25" rotation="0 -45 0" position="4 -0.5 -4.6" color="black" value="Siete Ojos - Version antigua"
+                    align="center"></a-text>
+            </a-entity>
+            <a-entity id="group-point8" scale="0 0 0">
+                <a-image src="#retratoTelde"
+                    spot="linkto:#telde; spotgroup:group-point1; sound: #birds; img: #telde" position="-3.5 3.5 5" rotation="0 -35 0">
+                </a-image>
+                <a-text value="Menu principal" scale="1.25 1.25 1.25" position="-3.4 2.8 4.8" rotation="0 145 0" color="black" align="center"></a-text>
+                <a-image src="#retratoSieteOjos"
+                    spot="linkto:#sieteOjos;spotgroup:group-point7; sound: #cars; img: #sieteOjos"
+                    position="4 0.1 -5" rotation="0 -40 0"></a-image>
+                    <a-text scale="1.25 1.25 1.25" rotation="0 -45 0" position="4 -0.5 -4.6" color="black" value="Siete Ojos - Version moderna"
+                    align="center"></a-text>
+            </a-entity>
+
+            <a-sky id="skybox" position="0 5.151 0" src="#telde" sound="src: #birds; loop: true"
+                data-sounding="false"></a-sky>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
